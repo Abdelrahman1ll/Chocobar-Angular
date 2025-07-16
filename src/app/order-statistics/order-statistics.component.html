@@ -1,0 +1,40 @@
+<app-header></app-header>
+<app-back></app-back>
+
+
+
+<div class="p-6 mt-10 mb-10">
+  <h2 class="text-2xl font-extrabold text-center text-[#6b3f1e] mb-6">
+    إحصائيات الطلبات حسب التاريخ
+  </h2>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 bg-[#fef8f1] p-6 rounded-2xl shadow-md border border-[#e2c9a5]"
+  >
+    <div class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition">
+      <p class="text-[#9a6b41] text-base font-medium mb-1">آخر 24 ساعة</p>
+      <p class="text-3xl font-extrabold text-[#4e2d14]">{{ stats.daily }}</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition">
+      <p class="text-[#9a6b41] text-base font-medium mb-1">آخر 7 أيام</p>
+      <p class="text-3xl font-extrabold text-[#4e2d14]">{{ stats.weekly }}</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition">
+      <p class="text-[#9a6b41] text-base font-medium mb-1">آخر 30 يوم</p>
+      <p class="text-3xl font-extrabold text-[#4e2d14]">{{ stats.monthly }}</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition">
+      <p class="text-[#9a6b41] text-base font-medium mb-1">آخر سنة</p>
+      <p class="text-3xl font-extrabold text-[#4e2d14]">{{ stats.yearly }}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<app-footer></app-footer>
