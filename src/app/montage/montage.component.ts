@@ -36,7 +36,6 @@ export class MontageComponent {
   selectedMontageId: string = '';
   search: string = '';
   user: any = null;
-
   constructor(
     private montageService: MontageService,
     private route: ActivatedRoute
@@ -61,12 +60,14 @@ export class MontageComponent {
 
   loadMontages() {
     this.isLoading = true;
+
     this.montageService.getMontages('').subscribe({
       next: (data) => {
         const typedData = data as unknown as MontageResponse;
         this.montages = typedData.projects || [];
         this.applyFilter();
         this.isLoading = false;
+       
       },
       error: (error) => {
         console.error('Error loading montages:', error);

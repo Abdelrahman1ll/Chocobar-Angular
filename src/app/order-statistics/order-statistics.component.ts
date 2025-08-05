@@ -28,38 +28,48 @@ export class OrderStatisticsComponent {
     });
   }
 
- calculateOrderStats(orders: Order[]) {
-  const now = new Date();
+  calculateOrderStats(orders: Order[]) {
+    const now = new Date();
 
-  const dayAgo = new Date(now);
-  dayAgo.setDate(dayAgo.getDate() - 1); // مر عليه 24 ساعة
+    const dayAgo = new Date(now);
+    dayAgo.setDate(dayAgo.getDate() - 1); // مر عليه 24 ساعة
 
-  const weekAgo = new Date(now);
-  weekAgo.setDate(weekAgo.getDate() - 7); // مر عليه أسبوع
+    const weekAgo = new Date(now);
+    weekAgo.setDate(weekAgo.getDate() - 7); // مر عليه أسبوع
 
-  const monthAgo = new Date(now);
-  monthAgo.setMonth(monthAgo.getMonth() - 1); // مر عليه شهر
+    const monthAgo = new Date(now);
+    monthAgo.setMonth(monthAgo.getMonth() - 1); // مر عليه شهر
 
-  const yearAgo = new Date(now);
-  yearAgo.setFullYear(now.getFullYear() - 1); // مر عليه سنة
+    const yearAgo = new Date(now);
+    yearAgo.setFullYear(now.getFullYear() - 1); // مر عليه سنة
 
-  const daily = orders.filter(
-    (order) => order.createdAt && new Date(order.createdAt) <= dayAgo
-  ).length;
+    const daily = orders.filter((order) => {
+      order.createdAt &&
+        new Date(order.createdAt) <= dayAgo &&
+        new Date(order.createdAt) > weekAgo;
+    }).length;
 
-  const weekly = orders.filter(
-    (order) => order.createdAt && new Date(order.createdAt) <= weekAgo
-  ).length;
+    const weekly = orders.filter(
+      (order) =>
+        order.createdAt &&
+        new Date(order.createdAt) <= weekAgo &&
+        new Date(order.createdAt) > monthAgo
+    ).length;
 
-  const monthly = orders.filter(
-    (order) => order.createdAt && new Date(order.createdAt) <= monthAgo
-  ).length;
+    const monthly = orders.filter(
+      (order) =>
+        order.createdAt &&
+        new Date(order.createdAt) <= monthAgo &&
+        new Date(order.createdAt) > yearAgo
+    ).length;
 
-  const yearly = orders.filter(
-    (order) => order.createdAt && new Date(order.createdAt) <= yearAgo
-  ).length;
+    const yearly = orders.filter(
+      (order) =>
+        order.createdAt &&
+        new Date(order.createdAt) <= yearAgo &&
+        new Date(order.createdAt) > new Date(yearAgo.getFullYear(), 0, 1) // بداية السنة
+    ).length;
 
-  return { daily, weekly, monthly, yearly };
-}
-
+    return { daily, weekly, monthly, yearly };
+  }
 }
