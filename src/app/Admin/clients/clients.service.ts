@@ -23,4 +23,22 @@ export class ClientsService {
       })
     );
   }
+
+  getPDF() {
+    const token = this.tokenHelper.getAccessToken();
+    const headers = token
+      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      : undefined;
+
+    return this.http.get(environment.API + '/pdf', {
+      headers,
+      responseType: 'blob', // Specify that we expect a blob response
+    }).pipe(
+      catchError((error) => {
+        throw error;
+      })
+    );
+  }
+
+
 }

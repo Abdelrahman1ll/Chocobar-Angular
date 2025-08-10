@@ -51,7 +51,7 @@
           class="flex items-center text-[#efd8b5] justify-between bg-[#5a3622] p-2 required:bg-[#372113] rounded-xl"
         >
           <span class="font-medium">شوكولاتة:</span>
-          <span  class="font-semibold">{{ choc.chocolate.name }}</span>
+          <span class="font-semibold">{{ choc.chocolate.name }}</span>
         </div>
         <div
           *ngFor="let add of bas.addOns"
@@ -74,9 +74,10 @@
   </div>
 </div>
 
-<div class="mt-6 px-10 max-w-3xl mx-auto mb-6">
+<div class="mt-6 px-10 max-w-3xl mx-auto mb-20">
   <button
-    [routerLink]="['/payment-page']"
+    (click)="goToPayment()"
+    type="button"
     class="w-full bg-[#372113] text-[#f2dbbe] py-3 text-lg rounded-full hover:bg-[#4b2e19] transition duration-300 shadow-md hover:shadow-lg font-semibold"
   >
     صفحة الدفع
